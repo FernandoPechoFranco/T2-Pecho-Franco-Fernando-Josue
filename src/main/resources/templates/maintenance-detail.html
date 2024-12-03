@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Crear Película</title>
+</head>
+<body>
+<h1>Crear Película</h1>
+<form th:action="@{/films}" th:object="${film}" method="post">
+  <label>Título:</label>
+  <input type="text" th:field="*{title}" required>
+  <label>Descripción:</label>
+  <textarea th:field="*{description}"></textarea>
+  <label>Idioma:</label>
+  <select th:field="*{language.languageId}">
+    <option th:each="lang : ${languages}" th:value="${lang.languageId}" th:text="${lang.name}"></option>
+  </select>
+  <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
